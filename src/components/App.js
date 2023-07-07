@@ -9,7 +9,11 @@ console.log({ CATEGORIES, TASKS });
 
 function App() {
 
-  // const [tasks, setTasks] = useState(TASKS)
+  const [tasks, setTasks] = useState(TASKS)
+
+  function handleDelete(deletedTaskText) {
+    setTasks(tasks.filter((task) => task.text !== deletedTaskText))
+  } 
   // const visibleTasks = tasks.filter((task) => category === "All" || task.category === category )
 
 
@@ -18,7 +22,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter />
       <NewTaskForm />
-      <TaskList tasks={TASKS}/>
+      <TaskList tasks={tasks} deleteTask={handleDelete}/>
     </div>
   );
 }
