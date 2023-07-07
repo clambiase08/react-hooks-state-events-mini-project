@@ -10,19 +10,20 @@ console.log({ CATEGORIES, TASKS });
 function App() {
 
   const [tasks, setTasks] = useState(TASKS)
+  const [category, setCategory] = useState("All")
 
   function handleDelete(deletedTaskText) {
     setTasks(tasks.filter((task) => task.text !== deletedTaskText))
   } 
-  // const visibleTasks = tasks.filter((task) => category === "All" || task.category === category )
+  const visibleTasks = tasks.filter((task) => category === "All" || task.category === category )
 
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter />
+      <CategoryFilter categories={CATEGORIES} selectedCategory={category} onSelectedCategory={setCategory}/>
       <NewTaskForm />
-      <TaskList tasks={tasks} deleteTask={handleDelete}/>
+      <TaskList tasks={visibleTasks} deleteTask={handleDelete}/>
     </div>
   );
 }
