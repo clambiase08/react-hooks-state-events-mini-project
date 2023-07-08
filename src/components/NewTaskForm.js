@@ -6,14 +6,14 @@ const initialState = {
 }
 function NewTaskForm({categories, onTaskFormSubmit}) {
 
-  // const [details, setDetails] = useState("")
+  // const [text, setText] = useState("")
   // const [category, setCategory] = useState()
 
   const [toDos, setToDos] = useState(initialState)
   const {text, category} = toDos
 
   // function handleDetails(e) {
-  //   setDetails(e.target.value)
+  //   setText(e.target.value)
   // }
 
   // function handleCategory(e) {
@@ -40,6 +40,7 @@ function NewTaskForm({categories, onTaskFormSubmit}) {
   function handleSubmit(e) {
     e.preventDefault()
     onTaskFormSubmit(toDos)
+    setToDos(initialState)
   }
 
   return (

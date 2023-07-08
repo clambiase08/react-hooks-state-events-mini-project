@@ -12,7 +12,7 @@ function App() {
   const [tasks, setTasks] = useState(TASKS)
   const [category, setCategory] = useState("All")
 
-  function handleDelete(deletedTaskText) {
+  function onDelete(deletedTaskText) {
     setTasks(tasks.filter((task) => task.text !== deletedTaskText))
   } 
   function addTasks(newTask) {
@@ -27,7 +27,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} selectedCategory={category} onSelectedCategory={setCategory}/>
       <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={addTasks}/>
-      <TaskList tasks={visibleTasks} deleteTask={handleDelete}/>
+      <TaskList tasks={visibleTasks} onDelete={onDelete}/>
     </div>
   );
 }
